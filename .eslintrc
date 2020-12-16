@@ -1,0 +1,24 @@
+{   
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "airbnb/base",
+        "prettier",
+        "plugin:prettier/recommended"
+    ],
+    "rules": {
+        "semi": 2,
+        "no-plusplus": "off",
+        "eol-last": "off",
+        "max-len": ["error",150, {"ignoreUrls":true}],
+        "no-tabs":"off",
+        "no-alert":"off",
+        "prefer-destructuring": "off",
+        "no-param-reassign": "off",
+        "quotes": ["error", "single"]
+    },
+    "plugins" : ["prettier"]
+}
+

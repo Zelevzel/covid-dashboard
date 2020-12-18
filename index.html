@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>COVID dashboard</title>
-	<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
+		<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
 	<link rel="stylesheet" href="./styles/style.css" type="text/css"/>
+	<script src="./src/lib/Chart.bundle.min.js"></script>
 </head>
 <body>
 	<header> <img src="./assetes/img/covid.png" alt=""> <p >COVID-19</p></header>
@@ -59,12 +60,27 @@
 					  </label>
 					statistics2</div>
 				</div>
-				<div class="graphic" style="  background-color: red;text-align: center;">
+				<div class="graphic" style=" text-align: center;">
 					<label class="expand">
-						<input data-toggle-class ="graphic"  type="checkbox" class="expandInput">
+						<input data-toggle-class ="graphic" data-toggle-full ="canvas"  type="checkbox" class="expandInput">
 						<span><img src="" alt=""></span>
 					  </label>
-					graphic</div>
+					  <div class="tableCanvas">	
+						  <div class="canvas">	
+						  <canvas id="graphs"></canvas>
+						</div>	
+					  	<p><select id="country">
+							<option >all</option>
+							<option >Russia</option>
+								<option >Afghanistan</option>
+					  	 </select></p style="display: inline-block;">
+					 	  <p><select id="status" >
+							<option >cases</option>
+							<option >deaths</option>
+							<option >recovered</option>
+					  	 </select></p>
+					</div>	
+					</div>
 			</div>
 		</div>
 	</main>

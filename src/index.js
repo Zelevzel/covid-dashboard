@@ -1,3 +1,11 @@
-import fullScreen from './fullScreen';
+import fullScreen from './fullScreen.js';
+import graph from './graph.js';
+/*
+глобальные переменные
+*/
+window.countrySelected = 'all'; // страна
 
-fullScreen();
+window.onload = () => {
+  fullScreen();
+  graph();
+};

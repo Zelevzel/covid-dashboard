@@ -4,4 +4,15 @@
    left: 10vw;
    right: 10vw;
    bottom: 5vh;
+   z-index: 1;
+}
+
+.mapLegend{
+   position: absolute;
+   display: flex;
+   top: 1vh;
+   right: 2vw;
+   z-index: 100;
+   align-items: center;
+   justify-content: center;
 }

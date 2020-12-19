@@ -1,51 +1,25 @@
-
 const mapOptions = {
-   center: [17.385044, 78.486671],
-   zoom: 40,
+   center: [17.385044, 78.486671],   
+   zoom: 10,
    attributionControl: false
 }
 let map = L.map('map', mapOptions).setView([0, 0], 1);
-
-// let gl = L.mapboxGL({
-//         attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
-//         style: 'https://api.maptiler.com/maps/toner/style.json?key=zkHdZm8T8kHbUdtvCExB'
-//       }).addTo(map);
 
 L.tileLayer('https://api.maptiler.com/maps/toner/{z}/{x}/{y}@2x.png?key=zkHdZm8T8kHbUdtvCExB', {
    atttibution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
 }).addTo(map);
 
-
-
-const legend = document.querySelector('.mapLegend');
-
-// L.legend.addTo(map);
-// var attrOptions = {
-//             prefix: legend
-//          };
-         
-//          // Creating an attribution
-//          var attr = L.control.attribution(attrOptions);
-//          attr.addTo(map);  
-
-// async function getResponse(){
-//     let information = await fetch('https://disease.sh/v3/covid-19/countries?yesterday=true');
-//     let content = await information.json();
-//     console.log(content);
-//     for (let i = 0; i < content.length; i++){
-//       lat = content[i]['countryInfo']['lat'];
-//       long = content[i]['countryInfo']['long'];
-//       cases = content[i]['cases'];
-//       console.log(lat, long, cases);
-//     }
-// }
+let circles = new L.LayerGroup();
 const infoCountries = []; 
+let indexMap = 'cases';
 
 function getInfoAllCountries() {
+   circles.clearLayers();
+
   fetch('https://disease.sh/v3/covid-19/countries?yesterday=true')
       .then((res) => res.json())
       .then((content) => {
-         console.log(content);
+         // console.log(content);
          for (let i = 0; i < content.length; i++) {
             const countries = {
                country: content[i].country,
@@ -68,76 +42,102 @@ function getInfoAllCountries() {
          }
          return infoCountries;
       })
-   //  .then((resultArr) => {
-   //    console.log(resultArr);
-   //    // что то с эти массивом можно делать
-   //  });
+    .then((infoCountries) => {
+
+      for (let i = 0; i < infoCountries.length; i++){  
+
+            let radius = 0;
+            let color = '';
+            let messagePopup = '';
+               // console.log(indexMap);
+            if (indexMap == 'cases'){
+               radius = infoCountries[i].cases / 11;
+               color = '#f03';
+               messagePopup = `Cases: ${infoCountries[i].cases}`;
+            } else if (indexMap == 'deaths'){               
+               radius = infoCountries[i].deaths;
+               color = '#d2a';
+               messagePopup = `Deaths: ${infoCountries[i].deaths}`;               
+            } else if (indexMap == 'recover'){               
+               radius = infoCountries[i].recovered /11;
+               color = '#090';
+               messagePopup = `Recovered: ${infoCountries[i].recovered}`;
+            } else if (indexMap == 'todayCases'){               
+               radius = infoCountries[i].todayCases;
+               color = '#FF033E';
+               messagePopup = `Cases today: ${infoCountries[i].todayCases}`;
+            } else if (indexMap == 'todayDeaths'){               
+               radius = infoCountries[i].todayDeaths * 100;
+               color = '#120A8F';
+               messagePopup = `Deaths today: ${infoCountries[i].todayDeaths}`;
+            } else if (indexMap == 'todayRecovered'){               
+               radius = infoCountries[i].todayRecovered * 5;
+               color = '#34C924';
+               messagePopup = `Recovered today: ${infoCountries[i].todayRecovered}`;
+            } else if (indexMap == 'casesPerHundredThousand'){               
+               radius = infoCountries[i].casesPerHundredThousand * 10;
+               color = '#FF9218';
+               messagePopup = `Cases per 100 000 population: ${infoCountries[i].casesPerHundredThousand}`;
+            } else if (indexMap == 'deathsPerHundredThousand'){               
+               radius = infoCountries[i].deathsPerHundredThousand * 300;
+               color = '#8B008B';
+               messagePopup = `Deaths per 100 000 population: ${infoCountries[i].deathsPerHundredThousand}`;
+            } else if (indexMap == 'recoveredPerHundredThousand'){               
+               radius = infoCountries[i].recoveredPerHundredThousand * 15;
+               color = '#C0FE0B';
+               messagePopup = `Recovered per 100 000 population: ${infoCountries[i].recoveredPerHundredThousand}`;
+            } else if (indexMap == 'todayCasesPerHundredThousand'){               
+               radius = infoCountries[i].todayCasesPerHundredThousand * 1200;
+               color = '#FE0B0B';
+               messagePopup = `Cases per 100 000 population today: ${infoCountries[i].todayCasesPerHundredThousand}`;
+            }else if (indexMap == 'todayDeathsPerHundredThousand'){               
+               radius = infoCountries[i].todayDeathsPerHundredThousand * 10000;
+               color = '#56FBAF';
+               messagePopup = `Deaths per 100 000 population today: ${infoCountries[i].todayDeathsPerHundredThousand}`;
+            }else if (indexMap == 'todayRecoveredPerHundredThousand'){               
+               radius = infoCountries[i].todayRecoveredPerHundredThousand * 1000;
+               color = '#0AFF30';
+               messagePopup = `Recovered per 100 000 population today: ${infoCountries[i].todayRecoveredPerHundredThousand}`;
+            }            
+            let circle = L.circle([infoCountries[i].lat, infoCountries[i].long], {
+               color: color,
+               fillColor: color,
+               fillOpacity: 0.5,
+               radius: radius
+            })            
+            circle.bindPopup(`<b>${infoCountries[i].country}</b></br>${messagePopup}`);
+            circles.addLayer(circle).addTo(map);
+
+      }
+   });
 }
+const legend = document.querySelector('.mapLegend');
+// legend.addEventListener('click', () => { });
 
-// function getInfoUSA() {
-//   fetch('https://disease.sh/v3/covid-19/states?yesterday=true')
-//       .then((res) => res.json())
-//       .then((content) => {
-//          // console.log(content);
-//          for (let i = 0; i < content.length; i++) {
-//             const states = {
-//                country: content[i].country,
-//                lat: content[i].countryInfo.lat,
-//                long: content[i].countryInfo.long,
-//                cases: content[i].cases,
-//                deaths: content[i].deaths
-//             };
-//             infoCountries.push(states);
-//          }
-//          return infoUSstates;
-//       })
-//    //  .then((resultArr) => {
-//    //    console.log(resultArr);
-//    //    // что то с эти массивом можно делать
-//    //  });
-// }
+const cases = document.getElementById('cases');
+const deaths = document.getElementById('deaths');
+const recovered = document.getElementById('recovered');
+const todayCases = document.getElementById('cases_today');
+const todayDeaths = document.getElementById('deaths_today');
+const todayRecovered = document.getElementById('recovered_today');
+const casesPerHundredThousand = document.getElementById('cases_per_hundred');
+const deathsPerHundredThousand = document.getElementById('deaths_per_hundred');
+const recoveredPerHundredThousand = document.getElementById('recovered_per_hundred');
+const todayCasesPerHundredThousand = document.getElementById('cases_per_hundred_today');
+const todayDeathsPerHundredThousand = document.getElementById('deaths_per_hundred_today');
+const todayRecoveredPerHundredThousand = document.getElementById('recovered_per_hundred_today');
 
-getInfoAllCountries();
-// getInfoUSA();
-console.log(infoCountries);
-// console.log(infoUSstates);
+cases.addEventListener('click', () => { indexMap = 'cases'; getInfoAllCountries();});
+deaths.addEventListener('click', () => { indexMap = 'deaths'; getInfoAllCountries();});
+recovered.addEventListener('click', () => { indexMap = 'recover'; getInfoAllCountries();});
+todayCases.addEventListener('click', () => { indexMap = 'todayCases'; getInfoAllCountries();});
+todayDeaths.addEventListener('click', () => { indexMap = 'todayDeaths'; getInfoAllCountries();});
+todayRecovered.addEventListener('click', () => { indexMap = 'todayRecovered'; getInfoAllCountries();});
+casesPerHundredThousand.addEventListener('click', () => { indexMap = 'casesPerHundredThousand'; getInfoAllCountries();});
+deathsPerHundredThousand.addEventListener('click', () => { indexMap = 'deathsPerHundredThousand'; getInfoAllCountries();});
+recoveredPerHundredThousand.addEventListener('click', () => { indexMap = 'recoveredPerHundredThousand'; getInfoAllCountries();});
+todayCasesPerHundredThousand.addEventListener('click', () => { indexMap = 'todayCasesPerHundredThousand'; getInfoAllCountries();});
+todayDeathsPerHundredThousand.addEventListener('click', () => { indexMap = 'todayDeathsPerHundredThousand'; getInfoAllCountries();});
+todayRecoveredPerHundredThousand.addEventListener('click', () => { indexMap = 'todayRecoveredPerHundredThousand'; getInfoAllCountries();});
 
-// setTimeout(function() {
-// 			console.log(lat, long, cases);
-// 		}, 2000);
-// // console.log(lat, long, cases);
-
-// let marker = L.marker([53.4, -0.02]).addTo(map);
-
-// function drawInfection() {
-setTimeout(function(){
-   // console.log(resultArr[0].lat);
-   for (let i = 0; i < infoCountries.length; i++){
-      // console.log(lat);
-         let circle = L.circle([infoCountries[i].lat, infoCountries[i].long], {
-            color: '#f03',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: infoCountries[i].cases / 11
-         }).addTo(map);      
-            circle.bindPopup(`<b>${infoCountries[i].country}</b></br><b>Cases: </b>${infoCountries[i].cases}</br><b>Deaths: </b>${infoCountries[i].deaths}`);
-   }
-}, 100);
-   
-// }
-
-// circle.bindPopup('<b>Cases:</b> 2 000 324 </br> <b>Deaths:</b> 48 478');
-
-// fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=366')
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     console.log(data);
-//   });
-
-
-
-// getResponse();
-// setTimeout(drawInfection, 4000);
-
+window.addEventListener('DOMcontentLoaded', getInfoAllCountries());

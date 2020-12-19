@@ -19,9 +19,7 @@
     min-height:530px ;
     padding: 5px 5px;
     background: #B8873D;
-  }
-
-  
+  } 
 
    header{
     background: #246E6E;
@@ -84,6 +82,7 @@
   }
 
   .centerContent{
+    position: relative;
     display: grid;
     grid-template-rows:  1fr auto;
     grid-gap: 5px;

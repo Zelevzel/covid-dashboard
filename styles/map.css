@@ -1,18 +1,74 @@
 #map {
    position: absolute;
-   top: 5vh;
-   left: 10vw;
-   right: 10vw;
-   bottom: 5vh;
-   z-index: 1;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 9vh;
+   z-index: 0;
 }
 
 .mapLegend{
    position: absolute;
    display: flex;
-   top: 1vh;
-   right: 2vw;
-   z-index: 100;
+   bottom: 1vh;
+   left: 1vh;
+   z-index: 1000;
+   padding: .3vh;
+   background-color: #fff;
+   border-radius: 3px;
    align-items: center;
    justify-content: center;
+   cursor: pointer;
 }
+
+.mapLegend:hover{
+   background-color:#ccc;
+}
+
+.indexMap{
+   width: 100%;
+   position: absolute;
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   /* align-items: flex-start; */
+   align-self: stretch;
+   height: 9vh;
+   bottom: 0;
+   overflow: hidden;
+   /* outline: 1px solid red; */
+}
+
+.index_item{
+   font-size: .8em;
+   color: aliceblue;
+   /* margin: 0 .1vw; */
+   padding: 0 .1vw;
+   background-color: rgb(0, 0, 0);
+   border-radius: 0 0 7px 7px;
+   border: .1vh solid rgb(250, 191, 81);
+   border-top: none;
+   cursor: pointer;
+}
+
+@media  (max-width: 1300px) {
+   .index_item{      
+      font-size: .6em;
+   }  
+}
+
+@media  (max-width: 530px) {
+   .index_item{      
+      font-size: .7em;
+      border-radius: 0 0 0 0;
+   } 
+
+   .indexMap{
+      flex-direction: column;
+      height: 19vh;
+   }  
+   #map{
+      bottom: 19vh;
+   }
+}
+ 

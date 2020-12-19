@@ -3,9 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>COVID dashboard</title>
-		<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
+	<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
 	<link rel="stylesheet" href="./styles/style.css" type="text/css"/>
+	<link rel="stylesheet" href="./styles/map.css" type="text/css"/>	
 	<script src="./src/lib/Chart.bundle.min.js"></script>
 </head>
 <body>
@@ -32,18 +36,33 @@
 					clock</div>
 			</div>
 			<div class="centerContent">
-				<div class="map" style="  background-color: yellow;text-align: center;">
+				<div id="map" class="map">
+					<button class="mapLegend"><i class="material-icons">list_alt</i></button>
 					<label class="expand">
 						<input data-toggle-class ="map" type="checkbox" class="expandInput">
 						<span></span>
-					  </label>
-					map</div>
-				<div class="dopInf" style=" background-color: yellowgreen;text-align: center;">
+					</label>
+				</div>
+				<div class="indexMap">
+					<button class="index_item" id="cases">Cases</button>
+					<button class="index_item" id="deaths">Deaths</button>
+					<button class="index_item" id="recovered">Recovered</button>
+					<button class="index_item" id="cases_today">Сases today</button>
+					<button class="index_item" id="deaths_today">Deaths today</button>
+					<button class="index_item" id="recovered_today">Recovered today</button>
+					<button class="index_item" id="cases_per_hundred">Cases per 100 000 population</button>
+					<button class="index_item" id="deaths_per_hundred">Deaths per 100 000 population</button>
+					<button class="index_item" id="recovered_per_hundred">Recovered per 100 000 population</button>
+					<button class="index_item" id="cases_per_hundred_today">Cases per 100 000 population today</button>
+					<button class="index_item" id="deaths_per_hundred_today">Deaths per 100 000 population today</button>
+					<button class="index_item" id="recovered_per_hundred_today">Recovered per 100 000 population today</button>
+				</div>
+				<!-- <div class="dopInf" style=" background-color: yellowgreen;text-align: center;">
 					<label class="expand">
 						<input data-toggle-class ="dopInf" type="checkbox" class="expandInput">
 						<span></span>
 					  </label>
-					dopInf</div>
+					dopInf</div> -->
 			</div>
 			<div class="rightContent">
 				<div class="allStatistics">
@@ -93,4 +112,5 @@
 
 </body>
 <script type="module" src="./src/index.js"></script>
+<script type="module" src="./src/map.js"></script>
 </html>

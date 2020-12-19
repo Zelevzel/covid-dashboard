@@ -41,18 +41,42 @@
 			</div>
 			<div class="rightContent">
 				<div class="allStatistics">
-				<div class="statistics1" style="  background-color: gold; text-align: center; ">
+				<div class="statistics1" style="  background-color: goldenrod; text-align: center; ">
 					<label class="expand">
 						<input data-toggle-class ="statistics1" type="checkbox" class="expandInput">
 						<span></span>
 					  </label>
-					statistics1</div>
+
+					  <p>Global <select id="Globalstatus" name="status" >
+						<option >cases</option>
+						<option >deaths</option>
+						<option >recovered</option>
+					   </select></p>
+					<div class="globalInf">
+					</div>
+					</div>
 				<div class="statistics2" style="  background-color: goldenrod;text-align: center;">
 					<label class="expand">
 						<input data-toggle-class ="statistics2" type="checkbox" class="expandInput">
 						<span></span>
 					  </label>
-					statistics2</div>
+					  <p>country: <select id="country1">
+						<option >Russia</option>
+						<option >Afghanistan</option>
+					   </select></p>
+					<div class="countryInf">
+
+					</div>
+					<p><select id="timeCountry">
+						<option >All</option>
+						<option >today</option>
+					   </select></p>
+					   <p><select id="amountCountry">
+						<option >All</option>
+						<option >per 100 thousand population</option>
+					   </select></p>
+				</div>
+					
 				</div>
 				<div class="graphic" style=" text-align: center;">
 					<label class="expand">

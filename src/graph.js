@@ -99,7 +99,7 @@ export default function loadgraph() {
       },
     };
     const graphs = new Chart(ctx, graphsConfig);
-    document.querySelector('#country').addEventListener('click', (event) => {
+    document.querySelector('#country').addEventListener('change', (event) => {
       contentDate = [];
       contentInfect = [];
       console.log(event.currentTarget.value);
@@ -115,7 +115,7 @@ export default function loadgraph() {
       }
     });
 
-    document.querySelector('#status').addEventListener('click', (event) => {
+    document.querySelector('#status').addEventListener('change', (event) => {
       contentDate = [];
       contentInfect = [];
       console.log(event.currentTarget.value);

@@ -85,7 +85,7 @@
 
   .centerContent{
     display: grid;
-    grid-template-rows:  1fr auto;
+    grid-template-rows:  1fr;
     grid-gap: 5px;
   }
   .rightContent{
@@ -104,7 +104,7 @@
   .globalCases{
     height:100px;
   }
-  .dopInf,.clock{
+  .clock{
     height: 50px;
   }
 

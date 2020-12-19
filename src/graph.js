@@ -21,13 +21,31 @@ async function getResponse(country, serch) {
 export default function loadgraph() {
   const ctx = document.getElementById('graphs').getContext('2d');
 
+  function updateGraphs(ContentInfect, GraphsConfig, Graphs, ContentDate) {
+    const infected = {
+      label: 'date',
+      data: ContentInfect,
+      borderWidth: 1,
+      backgroundColor: 'red',
+      borderColor: 'red',
+      fill: true,
+      categoryPercentage: 1,
+      barPercentage: 1,
+    };
+
+    GraphsConfig.data.datasets = [infected];
+    GraphsConfig.data.labels = ContentDate;
+    Graphs.update();
+  }
+
   getResponse('all', 'cases').then((content) => {
     contentDate = [];
     contentInfect = [];
-    for (const key in content) {
+
+    Object.entries(content).forEach(([key, value]) => {
+      contentInfect.push(value);
       contentDate.push(key);
-      contentInfect.push(content[key]);
-    }
+    });
     const datasets = {
       label: 'date',
       data: contentInfect,
@@ -88,10 +106,10 @@ export default function loadgraph() {
       if (window.countrySelected !== event.currentTarget.value) {
         window.countrySelected = event.currentTarget.value;
         getResponse(window.countrySelected, statusSelected).then((content) => {
-          for (const key in content) {
+          Object.entries(content).forEach(([key, value]) => {
+            contentInfect.push(value);
             contentDate.push(key);
-            contentInfect.push(content[key]);
-          }
+          });
           updateGraphs(contentInfect, graphsConfig, graphs, contentDate);
         });
       }
@@ -104,30 +122,13 @@ export default function loadgraph() {
       if (statusSelected !== event.currentTarget.value) {
         statusSelected = event.currentTarget.value;
         getResponse(window.countrySelected, statusSelected).then((Content) => {
-          for (const key in Content) {
+          Object.entries(Content).forEach(([key, value]) => {
+            contentInfect.push(value);
             contentDate.push(key);
-            contentInfect.push(Content[key]);
-          }
+          });
           updateGraphs(contentInfect, graphsConfig, graphs, contentDate);
         });
       }
     });
-
-    function updateGraphs(ContentInfect, GraphsConfig, Graphs, ContentDate) {
-      const infected = {
-        label: 'date',
-        data: ContentInfect,
-        borderWidth: 1,
-        backgroundColor: 'red',
-        borderColor: 'red',
-        fill: true,
-        categoryPercentage: 1,
-        barPercentage: 1,
-      };
-
-      GraphsConfig.data.datasets = [infected];
-      GraphsConfig.data.labels = ContentDate;
-      Graphs.update();
-    }
   });
 }

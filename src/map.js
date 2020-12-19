@@ -33,10 +33,10 @@ function getInfoAllCountries() {
                todayRecovered: content[i].todayRecovered,
                casesPerHundredThousand: Math.round(content[i].casesPerOneMillion / 10),
                deathsPerHundredThousand: Math.round(content[i].deathsPerOneMillion / 10),
-               recoveredPerHundredThousand: Math.round(content[i].recoveredPerOneMillion /10),
+               recoveredPerHundredThousand: Math.round(content[i].recoveredPerOneMillion / 10),
                todayCasesPerHundredThousand: Math.round((content[i].todayCases * 100000) / content[i].population),
-               todayDeathsPerHundredThousand: Math.round((content[i].todayDeaths* 100000) / content[i].population),
-               todayRecoveredPerHundredThousand: Math.round((content[i].todayRecovered* 100000) / content[i].population)
+               todayDeathsPerHundredThousand: Math.round((content[i].todayDeaths * 100000) / content[i].population),
+               todayRecoveredPerHundredThousand: Math.round((content[i].todayRecovered * 100000) / content[i].population)
             };
             infoCountries.push(countries);
          }
@@ -51,15 +51,19 @@ function getInfoAllCountries() {
             let messagePopup = '';
                // console.log(indexMap);
             if (indexMap == 'cases'){
-               radius = infoCountries[i].cases / 11;
+                  if (infoCountries[i].cases > 5000000){
+                     radius = 400000;
+                  }else radius = infoCountries[i].cases / 15;
                color = '#f03';
                messagePopup = `Cases: ${infoCountries[i].cases}`;
             } else if (indexMap == 'deaths'){               
                radius = infoCountries[i].deaths;
                color = '#d2a';
                messagePopup = `Deaths: ${infoCountries[i].deaths}`;               
-            } else if (indexMap == 'recover'){               
-               radius = infoCountries[i].recovered /11;
+            } else if (indexMap == 'recover'){    
+               if (infoCountries[i].recovered > 1500000){
+                  radius = 300000;
+               }else radius = infoCountries[i].recovered / 10;               
                color = '#090';
                messagePopup = `Recovered: ${infoCountries[i].recovered}`;
             } else if (indexMap == 'todayCases'){               

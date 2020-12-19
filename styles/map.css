@@ -51,6 +51,14 @@
    cursor: pointer;
 }
 
+.index_item:hover{
+   background-color: rgb(40, 40, 40);
+}
+
+.index_item:active{
+   background-color: rgb(143, 143, 143);
+}
+
 @media  (max-width: 1300px) {
    .index_item{      
       font-size: .6em;

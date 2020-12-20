@@ -15,6 +15,7 @@ let indexMap = 'cases';
 
 function getInfoAllCountries() {
    circles.clearLayers();
+   infoCountries.splice(0, infoCountries.length);
 
   fetch('https://disease.sh/v3/covid-19/countries?yesterday=true')
       .then((res) => res.json())
@@ -38,14 +39,15 @@ function getInfoAllCountries() {
                todayDeathsPerHundredThousand: Math.round((content[i].todayDeaths * 100000) / content[i].population),
                todayRecoveredPerHundredThousand: Math.round((content[i].todayRecovered * 100000) / content[i].population)
             };
-            infoCountries.push(countries);
+               if (content[i].population !== 0){
+                  infoCountries.push(countries);
+               }
          }
          return infoCountries;
       })
     .then((infoCountries) => {
-
       for (let i = 0; i < infoCountries.length; i++){  
-
+            // console.log(infoCountries);
             let radius = 0;
             let color = '';
             let messagePopup = '';
@@ -67,7 +69,7 @@ function getInfoAllCountries() {
                color = '#090';
                messagePopup = `Recovered: ${infoCountries[i].recovered}`;
             } else if (indexMap == 'todayCases'){               
-               radius = infoCountries[i].todayCases;
+               radius = infoCountries[i].todayCases * 2;
                color = '#FF033E';
                messagePopup = `Cases today: ${infoCountries[i].todayCases}`;
             } else if (indexMap == 'todayDeaths'){               
@@ -79,24 +81,24 @@ function getInfoAllCountries() {
                color = '#34C924';
                messagePopup = `Recovered today: ${infoCountries[i].todayRecovered}`;
             } else if (indexMap == 'casesPerHundredThousand'){               
-               radius = infoCountries[i].casesPerHundredThousand * 10;
+               radius = infoCountries[i].casesPerHundredThousand * 12;
                color = '#FF9218';
                messagePopup = `Cases per 100 000 population: ${infoCountries[i].casesPerHundredThousand}`;
             } else if (indexMap == 'deathsPerHundredThousand'){               
-               radius = infoCountries[i].deathsPerHundredThousand * 300;
+               radius = infoCountries[i].deathsPerHundredThousand * 600;
                color = '#8B008B';
                messagePopup = `Deaths per 100 000 population: ${infoCountries[i].deathsPerHundredThousand}`;
             } else if (indexMap == 'recoveredPerHundredThousand'){               
                radius = infoCountries[i].recoveredPerHundredThousand * 15;
-               color = '#C0FE0B';
+               color = '#Cf0faB';
                messagePopup = `Recovered per 100 000 population: ${infoCountries[i].recoveredPerHundredThousand}`;
             } else if (indexMap == 'todayCasesPerHundredThousand'){               
                radius = infoCountries[i].todayCasesPerHundredThousand * 1200;
                color = '#FE0B0B';
                messagePopup = `Cases per 100 000 population today: ${infoCountries[i].todayCasesPerHundredThousand}`;
             }else if (indexMap == 'todayDeathsPerHundredThousand'){               
-               radius = infoCountries[i].todayDeathsPerHundredThousand * 10000;
-               color = '#56FBAF';
+               radius = infoCountries[i].todayDeathsPerHundredThousand * 15000;
+               color = '#56AAA9';
                messagePopup = `Deaths per 100 000 population today: ${infoCountries[i].todayDeathsPerHundredThousand}`;
             }else if (indexMap == 'todayRecoveredPerHundredThousand'){               
                radius = infoCountries[i].todayRecoveredPerHundredThousand * 1000;
@@ -106,7 +108,7 @@ function getInfoAllCountries() {
             let circle = L.circle([infoCountries[i].lat, infoCountries[i].long], {
                color: color,
                fillColor: color,
-               fillOpacity: 0.5,
+               fillOpacity: 0.6,
                radius: radius
             })            
             circle.bindPopup(`<b>${infoCountries[i].country}</b></br>${messagePopup}`);

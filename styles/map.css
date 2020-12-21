@@ -7,7 +7,7 @@
    z-index: 0;
 }
 
-.mapLegend{
+.mapLegendBtn{
    position: absolute;
    display: flex;
    bottom: 1vh;
@@ -21,7 +21,7 @@
    cursor: pointer;
 }
 
-.mapLegend:hover{
+.mapLegendBtn:hover{
    background-color:#ccc;
 }
 
@@ -46,13 +46,18 @@
    padding: 0 .1vw;
    background-color: rgb(0, 0, 0);
    border-radius: 0 0 7px 7px;
-   border: .1vh solid rgb(250, 191, 81);
+   border: .1vh solid rgb(255, 255, 255);
    border-top: none;
    cursor: pointer;
+   outline: none;
+}
+
+.active{
+   background-color: rgb(83, 83, 83);
 }
 
 .index_item:hover{
-   background-color: rgb(40, 40, 40);
+   background-color: rgb(83, 83, 83);
 }
 
 .index_item:active{

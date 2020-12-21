@@ -1,4 +1,4 @@
-import { tabsContent } from './globalDOMelements';
+import { tabsContent } from './globalDOMElements';
 
 function getCasesByCountry(indexTab) {
   fetch('https://disease.sh/v3/covid-19/countries')

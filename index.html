@@ -1,114 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>COVID dashboard</title>
-		<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
-	<link rel="stylesheet" href="./styles/style.css" type="text/css"/>
+	<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
+	<link rel="stylesheet" href="./styles/style.css" type="text/css" />
 	<script src="./src/lib/Chart.bundle.min.js"></script>
 </head>
+
 <body>
-	<header> <img src="./assetes/img/covid.png" alt=""> <p >COVID-19</p></header>
+	<header> <img src="./assetes/img/covid.png" alt="">
+		<p>COVID-19</p>
+	</header>
 	<main>
 		<div class="content">
 			<div class="leftContent">
-				<div class="globalCases" style=" background-color: red;text-align: center;">  
+				<div class="globalCases" style=" background-color: red;text-align: center;">
 					<label class="expand">
-					<input data-toggle-class ="globalCases" type="checkbox" class="expandInput">
-					<span></span>
-				  </label> <p>globalCases</p></div>
+						<input data-toggle-class="globalCases" type="checkbox" class="expandInput">
+						<span></span>
+					</label>
+					<p>globalCases</p>
+				</div>
 				<div class="table" style=" background-color: green; text-align: center;">
 					<label class="expand">
-						<input data-toggle-class ="table" type="checkbox" class="expandInput">
+						<input data-toggle-class="table" type="checkbox" class="expandInput">
 						<span></span>
-					  </label>
-					table</div>
-				<div class="clock" style=" background-color: gray; text-align: center;" >
+					</label>
+					table
+				</div>
+				<div class="clock" style=" background-color: gray; text-align: center;">
 					<label class="expand">
-						<input data-toggle-class ="clock" type="checkbox" class="expandInput">
+						<input data-toggle-class="clock" type="checkbox" class="expandInput">
 						<span></span>
-					  </label>
-					clock</div>
+					</label>
+					clock
+				</div>
 			</div>
 			<div class="centerContent">
 				<div class="map" style="  background-color: yellow;text-align: center;">
 					<label class="expand">
-						<input data-toggle-class ="map" type="checkbox" class="expandInput">
+						<input data-toggle-class="map" type="checkbox" class="expandInput">
 						<span></span>
-					  </label>
-					map</div>
+					</label>
+					map
+				</div>
 			</div>
 			<div class="rightContent">
 				<div class="allStatistics">
-				<div class="statistics1" style="  background-color: goldenrod; text-align: center; ">
-					<label class="expand">
-						<input data-toggle-class ="statistics1" type="checkbox" class="expandInput">
-						<span></span>
-					  </label>
+					<div class="statistics1" style="  background-color: goldenrod; text-align: center; ">
+						<label class="expand">
+							<input data-toggle-class="statistics1" type="checkbox" class="expandInput">
+							<span></span>
+						</label>
 
-					  <p>Global <select id="Globalstatus" name="status" >
-						<option >cases</option>
-						<option >deaths</option>
-						<option >recovered</option>
-					   </select></p>
-					<div class="globalInf">
+						<p>Global <select id="Globalstatus" name="status" style="background: goldenrod;cursor: pointer;">
+								<option style="color: yellow;">cases</option>
+								<option style=" color: red;">deaths</option>
+								<option style=" color: green;">recovered</option>
+							</select></p>
+						<div class="globalInf">
+						</div>
 					</div>
-					</div>
-				<div class="statistics2" style="  background-color: goldenrod;text-align: center;">
-					<label class="expand">
-						<input data-toggle-class ="statistics2" type="checkbox" class="expandInput">
-						<span></span>
-					  </label>
-					  <p>country: <select id="country1">
-						<option >Russia</option>
-						<option >Afghanistan</option>
-					   </select></p>
-					<div class="countryInf">
+					<div class="statistics2" style="  background-color: goldenrod;text-align: center;">
+						<label class="expand">
+							<input data-toggle-class="statistics2" type="checkbox" class="expandInput">
+							<span></span>
+						</label>
+						<p>country: <select id="country1" style="	margin: 0 5px; background-color: goldenrod;">
+								<option>Russia</option>
+							</select></p>
+						<div class="countryInf">
 
+						</div>
+						<label class="arrowToDown">
+							<input type="checkbox" class="arrowToDownInputT">
+							<span></span> </label> today:<br>
+						<div class="timeCountry"></div>
+						<label class="arrowToDown">
+							<input type="checkbox" class="arrowToDownInputC">
+							<span></span></label> per 100 thousand population:<br>
+						<div class="amountCountry"></div>
 					</div>
-					<p><select id="timeCountry">
-						<option >All</option>
-						<option >today</option>
-					   </select></p>
-					   <p><select id="amountCountry">
-						<option >All</option>
-						<option >per 100 thousand population</option>
-					   </select></p>
-				</div>
-					
+
 				</div>
 				<div class="graphic" style=" text-align: center;">
 					<label class="expand">
-						<input data-toggle-class ="graphic" data-toggle-full ="canvas"  type="checkbox" class="expandInput">
+						<input data-toggle-class="graphic" data-toggle-full="canvas" type="checkbox" class="expandInput">
 						<span><img src="" alt=""></span>
-					  </label>
-					  <div class="tableCanvas">	
-						  <div class="canvas">	
-						  <canvas id="graphs"></canvas>
-						</div>	
-					  	<p><select id="country">
-							<option >all</option>
-							<option >Russia</option>
-								<option >Afghanistan</option>
-					  	 </select></p style="display: inline-block;">
-					 	  <p><select id="status" >
-							<option >cases</option>
-							<option >deaths</option>
-							<option >recovered</option>
-					  	 </select></p>
-					</div>	
+					</label>
+					<div class="tableCanvas">
+						<div class="canvas">
+							<canvas id="graphs"></canvas>
+						</div>
+						<p><select id="country" style="  background-color: goldenrod;">
+								<option>all</option>
+							</select></p style="display: inline-block;">
+						<p><select id="status" style="  background-color: goldenrod;">
+								<option>cases</option>
+								<option>deaths</option>
+								<option>recovered</option>
+							</select></p>
 					</div>
+				</div>
 			</div>
 		</div>
 	</main>
 	<footer>
-		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a  href="https://github.com/PalzunMike">PalzunMike</a></div>
-		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a  href="https://github.com/sanekiskita">sanekiskita</a></div>
-		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a  href="https://github.com/Zelevzel">Zelevzel</a></div>
-		<div class="contacts"><img src="./assetes/img/rs_school_js.svg" alt=""><a  href="https://rs.school/js/">Курс «JavaScript/Front-end»</a></div>
+		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a
+				href="https://github.com/PalzunMike">PalzunMike</a></div>
+		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a
+				href="https://github.com/sanekiskita">sanekiskita</a></div>
+		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a
+				href="https://github.com/Zelevzel">Zelevzel</a></div>
+		<div class="contacts"><img src="./assetes/img/rs_school_js.svg" alt=""><a href="https://rs.school/js/">Курс
+				«JavaScript/Front-end»</a></div>
 	</footer>
 
 </body>
 <script type="module" src="./src/index.js"></script>
+
 </html>

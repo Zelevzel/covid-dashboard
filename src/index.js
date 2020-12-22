@@ -1,5 +1,5 @@
 import fullScreen from './fullScreen.js';
-import graph from './graph.js';
+import { loadgraph as graph } from './graph.js';
 import statistics from './statistics.js';
 /*
 глобальные переменные

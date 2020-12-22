@@ -1,6 +1,6 @@
 import { tabsContent } from './globalDOMElements';
 
-function getCasesByCountry(indexTab) {
+function getCasesByCountry(indexTab = 0) {
   fetch('https://disease.sh/v3/covid-19/countries')
     .then((response) => response.json())
     .then((content) => {
@@ -10,7 +10,7 @@ function getCasesByCountry(indexTab) {
         const nameCountry = document.createElement('div');
         const countCases = document.createElement('div');
         rowCases.classList.add('global-country-cases');
-        nameCountry.classList.add('country');
+        nameCountry.classList.add('global-country');
         countCases.classList.add('count-cases');
 
         nameCountry.innerText = content[i].country;
@@ -23,7 +23,7 @@ function getCasesByCountry(indexTab) {
     });
 }
 
-function getCasesByProvince(indexTab) {
+function getCasesByProvince(indexTab = 1) {
   fetch('https://disease.sh/v3/covid-19/jhucsse')
     .then((response) => response.json())
     .then((content) => {
@@ -40,16 +40,10 @@ function getCasesByProvince(indexTab) {
         province.classList.add('province');
         country.classList.add('country');
 
-        if (data.country === 'US') {
-          confirmedCase.innerText = `${data.stats.confirmed} cases`;
-          province.innerText = data.province;
-          country.innerText = data.country;
-        } else if (data.province) {
-          confirmedCase.innerText = `${data.stats.confirmed} cases`;
-          province.innerText = data.province;
-          country.innerText = data.country;
-        }
         if (data.province) {
+          confirmedCase.innerText = `${data.stats.confirmed} cases`;
+          province.innerText = data.province;
+          country.innerText = data.country;
           locationName.append(province, country);
           rowCases.append(confirmedCase, locationName);
           tabsContent[indexTab].append(rowCases);
@@ -58,7 +52,7 @@ function getCasesByProvince(indexTab) {
     });
 }
 
-function getCasesByUSACounty(indexTab) {
+function getCasesByUSACounty(indexTab = 2) {
   fetch('https://disease.sh/v3/covid-19/jhucsse/counties/')
     .then((response) => response.json())
     .then((content) => {
@@ -89,18 +83,6 @@ function getCasesByUSACounty(indexTab) {
     });
 }
 
-export default function renderTabContent(i = 0) {
-  switch (i) {
-    case 0:
-      getCasesByCountry(i);
-      break;
-    case 1:
-      getCasesByProvince(i);
-      break;
-    case 2:
-      getCasesByUSACounty(i);
-      break;
-    default:
-      break;
-  }
-}
+getCasesByCountry();
+getCasesByProvince();
+getCasesByUSACounty();

@@ -57,6 +57,7 @@
     height: 100%;
     background: url("../assetes/img/fullScreen.png") no-repeat 50% ;
     background-size: contain;
+    z-index: 1000;
     
   }
   div > .expand input:checked + span {

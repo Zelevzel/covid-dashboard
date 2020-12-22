@@ -11,6 +11,7 @@ L.tileLayer('https://api.maptiler.com/maps/toner/{z}/{x}/{y}@2x.png?key=zkHdZm8T
 
 let circles = new L.LayerGroup();
 const infoCountries = []; 
+
 let arr = [];
 let indexMap = 'cases';
 const index = document.querySelectorAll('.index_item');
@@ -18,6 +19,7 @@ const index = document.querySelectorAll('.index_item');
 function getInfoAllCountries() {
    circles.clearLayers();
    infoCountries.splice(0, infoCountries.length);
+   arr = [];
    
    
 
@@ -44,79 +46,115 @@ function getInfoAllCountries() {
                todayRecoveredPerHundredThousand: Math.round((content[i].todayRecovered * 100000) / content[i].population)
             };
                if (content[i].population !== 0){
-                  infoCountries.push(countries);                  
+                  infoCountries.push(countries);
+                    if (indexMap == 'cases'){
+                     fillArray(content[i].cases); 
+                  } else if (indexMap == 'deaths'){               
+                     fillArray(content[i].deaths);               
+                  } else if (indexMap == 'recover'){    
+                     fillArray(content[i].recovered);
+                  } else if (indexMap == 'todayCases'){               
+                      fillArray(content[i].todayCases);  
+                  } else if (indexMap == 'todayDeaths'){               
+                      fillArray(content[i].todayDeaths);  
+                  } else if (indexMap == 'todayRecovered'){               
+                     fillArray(content[i].todayRecovered);
+                  } else if (indexMap == 'casesPerHundredThousand'){               
+                     fillArray(Math.round(content[i].casesPerOneMillion / 10));
+                  } else if (indexMap == 'deathsPerHundredThousand'){               
+                     fillArray( Math.round(content[i].deathsPerOneMillion / 10));
+                  } else if (indexMap == 'recoveredPerHundredThousand'){               
+                     fillArray(Math.round(content[i].recoveredPerOneMillion / 10));
+                  } else if (indexMap == 'todayCasesPerHundredThousand'){               
+                     fillArray(Math.round((content[i].todayCases * 100000) / content[i].population));
+                  }else if (indexMap == 'todayDeathsPerHundredThousand'){               
+                     fillArray(Math.round((content[i].todayDeaths * 100000) / content[i].population));
+                  }else if (indexMap == 'todayRecoveredPerHundredThousand'){               
+                     fillArray(Math.round((content[i].todayRecovered * 100000) / content[i].population));
+                  }
+                                       
                }
          }
          return infoCountries;
       })
     .then((infoCountries) => {
-      for (let i = 0; i < infoCountries.length; i++){           
-            
-            
-
+      for (let i = 0; i < infoCountries.length; i++){
+            // setRadius(infoCountries[i].cases);
             let radius = 0;
             let color = '';
             let messagePopup = '';
-               // console.log(indexMap);
-            if (indexMap == 'cases'){
-                  if (infoCountries[i].cases > 5000000){
-                     radius = 400000;
-                  }else radius = infoCountries[i].cases / 15;
+
+            const legend = document.querySelector('.legend');
+            
+
+            legend.innerHTML = `<div class="circle one"><span>${arr[210] + 1} - ${arr[217]}</span></div>
+							<div class="circle two"><span>${arr[150] + 1} - ${arr[210]}</span></div>
+							<div class="circle three"><span>${arr[80] + 1} - ${arr[150]}</span></div>
+							<div class="circle four"><span>${arr[30] + 1} - ${arr[80]}</span></div>
+							<div class="circle five"><span>1 - ${arr[30]}</span></div>
+							<div class="circle six"><span>0</span></div>`;
+               
+            if (indexMap == 'cases'){               
+               radius = setRadius(infoCountries[i].cases);               
                color = '#FF2300';
                messagePopup = `Cases: ${infoCountries[i].cases}`;
             } else if (indexMap == 'deaths'){               
-               radius = infoCountries[i].deaths;
+               radius = setRadius(infoCountries[i].deaths);
+               // console.log (radius, infoCountries[i].country)
                color = '#D636C9';
                messagePopup = `Deaths: ${infoCountries[i].deaths}`;               
             } else if (indexMap == 'recover'){    
-               if (infoCountries[i].recovered > 1500000){
-                  radius = 300000;
-               }else radius = infoCountries[i].recovered / 10;               
+               radius = setRadius(infoCountries[i].recovered);               
                color = '#409300';
                messagePopup = `Recovered: ${infoCountries[i].recovered}`;
             } else if (indexMap == 'todayCases'){               
-               radius = infoCountries[i].todayCases * 2;
+               radius = setRadius(infoCountries[i].todayCases);
                color = '#AC2B50';
                messagePopup = `Cases today: ${infoCountries[i].todayCases}`;
             } else if (indexMap == 'todayDeaths'){               
-               radius = infoCountries[i].todayDeaths * 100;
+               radius = setRadius(infoCountries[i].todayDeaths);
                color = '#7446D7';
                messagePopup = `Deaths today: ${infoCountries[i].todayDeaths}`;
             } else if (indexMap == 'todayRecovered'){               
-               radius = infoCountries[i].todayRecovered * 5;
+               radius = setRadius(infoCountries[i].todayRecovered);
                color = '#00C322';
                messagePopup = `Recovered today: ${infoCountries[i].todayRecovered}`;
             } else if (indexMap == 'casesPerHundredThousand'){               
-               radius = infoCountries[i].casesPerHundredThousand * 12;
+               radius = setRadius(infoCountries[i].casesPerHundredThousand);
                color = '#FF9200';
                messagePopup = `Cases per 100 000 population: ${infoCountries[i].casesPerHundredThousand}`;
             } else if (indexMap == 'deathsPerHundredThousand'){               
-               radius = infoCountries[i].deathsPerHundredThousand * 600;
+               radius = setRadius(infoCountries[i].deathsPerHundredThousand);
                color = '#3F92D2';
                messagePopup = `Deaths per 100 000 population: ${infoCountries[i].deathsPerHundredThousand}`;
             } else if (indexMap == 'recoveredPerHundredThousand'){               
-               radius = infoCountries[i].recoveredPerHundredThousand * 15;
+               radius = setRadius(infoCountries[i].recoveredPerHundredThousand);
                color = '#FFD300';
                messagePopup = `Recovered per 100 000 population: ${infoCountries[i].recoveredPerHundredThousand}`;
             } else if (indexMap == 'todayCasesPerHundredThousand'){               
-               radius = infoCountries[i].todayCasesPerHundredThousand * 1200;
+               radius = setRadius(infoCountries[i].todayCasesPerHundredThousand);
                color = '#6A48D7';
                messagePopup = `Cases per 100 000 population today: ${infoCountries[i].todayCasesPerHundredThousand}`;
             }else if (indexMap == 'todayDeathsPerHundredThousand'){               
-               radius = infoCountries[i].todayDeathsPerHundredThousand * 15000;
+               radius = setRadius(infoCountries[i].todayDeathsPerHundredThousand) / 10;
                color = '#61B4CF';
+// console.log (radius, infoCountries[i].country)
                messagePopup = `Deaths per 100 000 population today: ${infoCountries[i].todayDeathsPerHundredThousand}`;
             }else if (indexMap == 'todayRecoveredPerHundredThousand'){               
-               radius = infoCountries[i].todayRecoveredPerHundredThousand * 1000;
+               radius = setRadius(infoCountries[i].todayRecoveredPerHundredThousand);
                color = '#2F0571';
                messagePopup = `Recovered per 100 000 population today: ${infoCountries[i].todayRecoveredPerHundredThousand}`;
             }            
             let circle = L.circle([infoCountries[i].lat, infoCountries[i].long], {
                color: color,
                fillColor: color,
-               fillOpacity: 0.6,
+               fillOpacity: 0.8,
                radius: radius
-            })  
+            }) 
+
+            
+            const legCircle = document.querySelectorAll('.circle');
+            legCircle.forEach(n => n.style.backgroundColor = `${color}`);            
             circle.bindPopup(`<b>${infoCountries[i].country}</b></br>${messagePopup}`);          
             circle.on('mouseover', (e) => {
                circle.openPopup();
@@ -130,18 +168,42 @@ function getInfoAllCountries() {
    });
 }
 
-function setRadius(el){
+function fillArray(el){
    arr.push(el);
-   console.log(arr.sort(function (a ,b){ return a - b}));
+   arr.sort(function (a ,b){ return a - b});
 }
+
+function setRadius(el){
+   console.log (arr[30], arr[80], arr[150], arr[210], arr[217])
+   for (let i = 0; i < arr.length; i++){
+      if (el == 0){
+         return 0;         
+      }else if ( 1 <= el && el < arr[30]){
+         return 10000;
+      } else if (arr[30] <= el && el < arr[80]){
+         return 50000;
+      } else if ( arr[80] <= el && el < arr[150]){
+         return 80000;
+      } else if ( arr[150] <= el && el < arr[210]){
+         return 120000;
+      } else if ( arr[210] <= el && el <= arr[217]){
+         return 200000;
+      } else if ( arr[217] < el){
+         return 300000;
+      }
+   }
+  
+};
 
 function addActive(el){
     index.forEach(n => n.classList.remove('active'));  
     el.classList.add('active') 
 };
 
-// const legend = document.querySelector('.mapLegend');
-// legend.addEventListener('click', () => { });
+const legendBtn = document.querySelector('.mapLegendBtn');
+const legendMain = document.querySelector('.popup_legend');
+
+legendBtn.addEventListener('click', () => {legendMain.classList.toggle('hidden')});
 
 const cases = document.getElementById('cases');
 const deaths = document.getElementById('deaths');

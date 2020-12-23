@@ -51,7 +51,6 @@ async function getInfoAllCountries() {
 
 async function addInfWorld(info) {
   const timer = new Date();
-  console.log(timer);
   const divGlobalInf = document.querySelector('.globalInf');
   divGlobalInf.innerHTML = '';
   const newCountry = document.createElement('div');
@@ -74,7 +73,6 @@ async function addInfWorld(info) {
         break;
     }
   });
-  console.log(timer);
 }
 
 function addInfCountrydop(data, classInput, classDiv) {
@@ -96,7 +94,6 @@ function addInfCountrydop(data, classInput, classDiv) {
 }
 
 function addInfCountry(data) {
-  console.log('addInfCountry');
   const divGlobalInf = document.querySelector('.countryInf');
   divGlobalInf.innerHTML = '';
   const newCountry = document.createElement('div');

@@ -24,7 +24,6 @@ async function getResponse(country, serch) {
     const content = await information.json();
     return content[serch];
   } catch (e) {
-    console.log('we could not find the data');
     const newDiv = document.createElement('div');
     newDiv.className = 'graphsInformation';
     newDiv.style =
@@ -176,8 +175,6 @@ export function refreshGraphs(
 ) {
   contentDate = [];
   contentInfect = [];
-  console.log(TargetValue);
-  console.log(theseChanges);
 
   if (theseChanges !== TargetValue) {
     theseChanges = TargetValue;

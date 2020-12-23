@@ -9,8 +9,8 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>COVID dashboard</title>
 	<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
-	<link rel="stylesheet" href="./styles/style.css" type="text/css" />
 	<link rel="stylesheet" href="./styles/map.css" type="text/css" />
+	<link rel="stylesheet" href="./styles/style.css" type="text/css" />
 	<script src="./src/lib/Chart.bundle.min.js"></script>
 </head>
 
@@ -21,26 +21,26 @@
 	<main>
 		<div class="content">
 			<div class="leftContent">
-				<div class="globalCases" style=" background-color: red;text-align: center;">
+				<div class="globalCases" style=" background-color: #16161a;text-align: center;">
 					<label class="expand">
 						<input data-toggle-class="globalCases" type="checkbox" class="expandInput">
 						<span></span>
 					</label>
 					<p>globalCases</p>
 				</div>
-				<div class="table" style=" background-color: green; text-align: center;">
+				<div class="table" style=" background-color: #16161a; text-align: center;">
 					<label class="expand">
 						<input data-toggle-class="table" type="checkbox" class="expandInput">
 						<span></span>
 					</label>
-					table
+					<p>table</p>
 				</div>
-				<div class="clock" style=" background-color: gray; text-align: center;">
+				<div class="clock" style=" background-color: #16161a; text-align: center;">
 					<label class="expand">
 						<input data-toggle-class="clock" type="checkbox" class="expandInput">
 						<span></span>
 					</label>
-					clock
+					<p>clock</p>
 				</div>
 			</div>
 			<div class="centerContent">
@@ -82,13 +82,13 @@
 			</div>
 			<div class="rightContent">
 				<div class="allStatistics">
-					<div class="statistics1" style="  background-color: goldenrod; text-align: center; ">
+					<div class="statistics1" style="  background-color: #16161a; text-align: center; ">
 						<label class="expand">
 							<input data-toggle-class="statistics1" type="checkbox" class="expandInput">
 							<span></span>
 						</label>
 
-						<p>Global <select id="Globalstatus" name="status" style="background: goldenrod;cursor: pointer;">
+						<p>Global <select id="Globalstatus" name="status" style="background: #16161a;cursor: pointer;">
 								<option style="color: yellow;">cases</option>
 								<option style=" color: red;">deaths</option>
 								<option style=" color: green;">recovered</option>
@@ -96,12 +96,12 @@
 						<div class="globalInf">
 						</div>
 					</div>
-					<div class="statistics2" style="  background-color: goldenrod;text-align: center;">
+					<div class="statistics2" style="  background-color: #16161a;text-align: center;">
 						<label class="expand">
 							<input data-toggle-class="statistics2" type="checkbox" class="expandInput">
 							<span></span>
 						</label>
-						<p>country: <select id="country1" style="	margin: 0 5px; background-color: goldenrod;">
+						<p>country: <select id="country1" style="	margin: 0 5px; background-color: #16161a;">
 								<option>Russia</option>
 							</select></p>
 						<div class="countryInf">
@@ -127,10 +127,10 @@
 						<div class="canvas">
 							<canvas id="graphs"></canvas>
 						</div>
-						<p><select id="country" style="  background-color: goldenrod;">
+						<p><select id="country" style="  background-color: #16161a;">
 								<option>all</option>
 							</select></p style="display: inline-block;">
-						<p><select id="status" style="  background-color: goldenrod;">
+						<p><select id="status" style="  background-color: #16161a;">
 								<option>cases</option>
 								<option>deaths</option>
 								<option>recovered</option>

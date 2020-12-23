@@ -1,8 +1,10 @@
 function blockfullScreen() {
   const elem = document.querySelector(`.${this.dataset.toggleClass}`);
   elem.classList.toggle('FullScreen');
-  document.querySelector('footer').style.display =
-    document.querySelector('footer').style.display !== 'none' ? 'none' : 'grid';
+  document.querySelector('body').style.overflowY =
+    document.querySelector('body').style.overflowY !== 'hidden'
+      ? 'hidden'
+      : 'auto';
   if (this.dataset.toggleFull !== undefined) {
     const elemPlus80na80 = document.querySelector(
       `.${this.dataset.toggleFull}`

@@ -1,0 +1,329 @@
+* {
+        margin: 0;
+        padding: 0;
+        border: 0;
+  }
+  p{
+    color: #fffffe;
+  }
+  .countrySelected{
+    color: #7f5af0;
+  }
+select{
+  color :#94a1b2;;
+}
+.statistics2{
+  color: #fffffe;
+}
+  a{
+    text-decoration: none;
+    color: #94a1b2;
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;;
+  }
+  main{
+    min-height:530px ;
+    padding: 5px 5px;
+    background: #242629;
+  } 
+
+   header{
+    background: #16161a;
+    vertical-align: middle;
+    text-align: center;
+  }
+  header img{
+    width: 35px;
+    filter: brightness(1.3) invert(0.17) saturate(1.6) sepia(0.25) url('#x-rays');
+  }
+  header p{
+    display: inline-block;
+  }
+
+
+  .expand{
+    visibility: hidden;
+    position: relative;
+    float: right;
+    top:0;
+    right: 0;
+    z-index: 2;
+  }
+  .expand input{
+      visibility: hidden;
+  }
+
+  div >.expand input + span {
+    filter: invert(0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: url("../assetes/img/fullScreen.png") no-repeat 50% ;
+    background-size: contain;
+    z-index: 1000;
+    
+  }
+  div >.arrowToDown input{
+    visibility: hidden;
+  }
+  div >.arrowToDown input + span {
+    filter: invert(0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: url("../assetes/img/arrow-down.png") no-repeat;
+    background-size: contain;
+    transform: rotateX(0deg);
+    transition: 1s;
+  }
+  div >.arrowToDown input:checked + span {
+    filter: invert(0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: url("../assetes/img/arrow-down.png") no-repeat;
+    background-size: contain;
+    transform: rotateX(180deg);
+  }
+
+  .arrowToDown{
+    position: relative;
+    float: left;
+    text-align: left;
+    top: 0;
+    right: 0;
+  }
+
+
+  /* отображеение иконки макс экран*/
+    div:hover > .expand{
+        visibility:visible;
+    }
+
+  .content{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
+    grid-gap: 5px;
+  }
+  .leftContent{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 5px;
+  }
+
+  .centerContent{
+    position: relative;
+    display: grid;
+    grid-template-rows:  1fr;
+    grid-gap: 5px;
+  }
+  .rightContent{
+    display: grid;
+    grid-template-rows:  2fr auto;
+    grid-gap: 5px;
+  }
+
+  .allStatistics{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+  }
+
+  
+  .globalCases{
+    height:100px;
+  }
+  .clock{
+    height: 50px;
+  }
+
+  footer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    background-color:	#16161a;
+  }
+  
+  .contacts{
+    
+    width: 100%;
+    text-align: center;
+  }
+  .contacts img {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height:50px ;
+    /*filter: invert(1);*/
+  }
+  .graphic{
+    background-color:#16161a;
+    
+    height: max-content;
+  }
+  .tableCanvas{
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+    width: 100%;
+    height: max-content;
+  }
+  
+.graphic canvas{
+  width: 80%;
+  margin:auto;
+}
+.canvas{
+  margin: auto;
+  height: 20vh;
+  width: 25vw;
+}
+.globalInf{
+  text-align: left;
+  overflow-y: scroll;
+  height: 50vh;
+}
+
+
+
+.globalInf img{
+width: 10%;
+max-width: 20px;
+}
+
+.globalInf::-webkit-scrollbar-track {border-radius: 4px;}
+.globalInf::-webkit-scrollbar {width: 6px;}
+.globalInf::-webkit-scrollbar-thumb {border-radius: 4px;background: #f0f2f5;}
+.globalInf:hover::-webkit-scrollbar-thumb {background: #94a1b2;}
+
+.countrySelected{
+  cursor: pointer;
+}
+
+.countryInf, .timeCountry, .amountCountry{
+  border-bottom:solid 1px ;
+  margin-bottom: 5%;
+}
+
+#map .expandInput{
+visibility: hidden;
+
+}
+#map .expand{
+  z-index: 1001;
+}
+
+
+
+
+
+
+
+
+/* Portrait tablets and small desktops */
+@media  (max-width: 991px) {
+    .content{
+        grid-template-columns: auto;
+        grid-template-rows: 1fr auto 1.5fr;
+    }
+    .leftContent{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas:
+    "c a"
+    "c b";
+}
+.table{
+    
+    grid-area: c;
+}
+.globalCases{
+    grid-area: a;
+    /*height: 100%;*/
+}
+.clock{
+    height: 100%;
+    grid-area: b;
+}
+footer{
+  grid-template-columns: repeat(2,1fr);
+}
+.contacts{
+  margin-bottom: 10px;
+}
+
+.canvas{
+  margin: auto;
+  height: 20vh;
+  width: 90vw;
+}
+.map{
+  height: 100vh;
+}
+
+
+
+#map{
+  position: relative;
+  margin-bottom: 9vh;
+}
+
+.centerContent .FullScreen{
+  position: fixed !important;
+}
+
+    }
+
+
+
+
+.FullScreen .globalInf{
+  text-align: center;
+  height: 100vh;
+}
+.FullScreen  p{
+font-size: 30px;}
+
+.FullScreen .expand{
+  margin: 5px;
+}
+.Fullobj{
+  width: 80vw;
+  height: 80vh;
+}
+
+
+
+.FullScreen{
+  top: 0px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  z-index: 1001;
+  
+}
+
+
+

@@ -1,0 +1,138 @@
+#map {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 9vh;   
+}
+.mapLegendBtn{
+   position: absolute;
+   display: flex;
+   bottom: 1vh;
+   left: 1vh;
+   z-index: 1000;
+   padding: .3vh;
+   background-color: #fff;
+   border-radius: 3px;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+}
+.mapLegendBtn:hover{
+   background-color:#ccc;
+}
+.indexMap{
+   width: 100%;
+   position: absolute;
+   display: flex;
+   flex-wrap: nowrap;
+   justify-content: space-between;   
+   align-self: stretch;
+   height: 9vh;
+   bottom: 0;
+   overflow: hidden;   
+}
+.index_item{
+   font-size: .8em;
+   color: aliceblue;   
+   padding: 0 .1vw;
+   background-color: rgb(0, 0, 0);
+   border-radius: 0 0 7px 7px;
+   border: .1vh solid rgb(255, 255, 255);
+   border-top: none;
+   cursor: pointer;
+   outline: none;
+}
+.active{
+   background-color: rgb(83, 83, 83);
+}
+.index_item:hover{
+   background-color: rgb(83, 83, 83);
+}
+.index_item:active{
+   background-color: rgb(143, 143, 143);
+}
+.popup_legend{
+   position: absolute;
+   height: 30vh;
+   width: 11vw;
+   bottom: 4vh;
+   left: 2vw;
+   z-index: 1000;
+   border-radius: 5px;
+   background-color: rgb(148, 147, 147);
+   display: flex;
+   justify-content: center;
+   min-width: 150px;
+}
+.hidden{
+   display: none;
+}
+.legend{
+   min-width: 148px;
+   position: absolute;
+   margin-top: 5px;
+   height: 28vh;
+   width: 10.8vw;
+   background-color: rgb(49, 49, 49);
+   bottom: 0.2vh;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: space-evenly;   
+}
+.circle{
+   height: 4px;
+   width: 4px;
+   background-color: #fff;
+   border-radius: 100%;
+   margin-left: 20px;
+   line-height: 2em; 
+}
+.five{
+   height: 7px;
+   width: 7px;  
+}
+.four{
+   height: 10px;
+   width: 10px;
+}
+.three{
+   height: 13px;
+   width: 13px;
+}
+.two{
+   height: 16px;
+   width: 16px;
+}
+.one{
+   height: 20px;
+   width: 20px;
+}
+.circle span {
+   color: #fff;
+   position: absolute;
+   margin-left: 30px;   
+}
+@media  (max-width: 1300px) {
+   .index_item{      
+      font-size: .6em;      
+   }
+   .circle span{
+      font-size: 0.8em;
+   }
+}
+@media  (max-width: 530px) {
+   .index_item{      
+      font-size: .7em;
+      border-radius: 0 0 0 0;
+   } 
+   .indexMap{
+      flex-direction: column;
+      height: 19vh;
+   } 
+   #map{
+      bottom: 19vh;
+   }
+} 
+

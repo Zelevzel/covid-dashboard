@@ -3,9 +3,118 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>COVID dashboard</title>
+	<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
+	<link rel="stylesheet" href="./styles/style.css" type="text/css"/>
+	<link rel="stylesheet" href="./styles/map.css" type="text/css"/>	
+	<script src="./src/lib/Chart.bundle.min.js"></script>
 </head>
 <body>
-	
+	<header> <img src="./assetes/img/covid.png" alt=""> <p >COVID-19</p></header>
+	<main>
+		<div class="content">
+			<div class="leftContent">
+				<div class="globalCases" style=" background-color: red;text-align: center;">  
+					<label class="expand">
+					<input data-toggle-class ="globalCases" type="checkbox" class="expandInput">
+					<span></span>
+				  </label> <p>globalCases</p></div>
+				<div class="table" style=" background-color: green; text-align: center;">
+					<label class="expand">
+						<input data-toggle-class ="table" type="checkbox" class="expandInput">
+						<span></span>
+					  </label>
+					table</div>
+				<div class="clock" style=" background-color: gray; text-align: center;" >
+					<label class="expand">
+						<input data-toggle-class ="clock" type="checkbox" class="expandInput">
+						<span></span>
+					  </label>
+					clock</div>
+			</div>
+			<div class="centerContent">
+				<div id="map" class="map">
+					<button class="mapLegendBtn"><i class="material-icons">list_alt</i></button>
+					<div class="popup_legend hidden">
+						Legend
+						<div class="legend">
+							<div class="circle one"><span>5000 - 20 000</span></div>
+							<div class="circle two"><span>1000 - 5000</span></div>
+							<div class="circle three"><span>500 - 1000</span></div>
+							<div class="circle four"><span>300 - 500</span></div>
+							<div class="circle five"><span>100 - 300</span></div>
+							<div class="circle six"><span>1 - 100</span></div>
+						</div>	
+					</div>
+					<label class="expand">
+						<input data-toggle-class ="map" type="checkbox" class="expandInput">
+						<span></span>
+					</label>
+				</div>
+				<div class="indexMap">
+					<button class="index_item active" id="cases">Cases</button>
+					<button class="index_item" id="deaths">Deaths</button>
+					<button class="index_item" id="recovered">Recovered</button>
+					<button class="index_item" id="cases_today">Сases today</button>
+					<button class="index_item" id="deaths_today">Deaths today</button>
+					<button class="index_item" id="recovered_today">Recovered today</button>
+					<button class="index_item" id="cases_per_hundred">Cases per 100 000 population</button>
+					<button class="index_item" id="deaths_per_hundred">Deaths per 100 000 population</button>
+					<button class="index_item" id="recovered_per_hundred">Recovered per 100 000 population</button>
+					<button class="index_item" id="cases_per_hundred_today">Cases per 100 000 population today</button>
+					<button class="index_item" id="deaths_per_hundred_today">Deaths per 100 000 population today</button>
+					<button class="index_item" id="recovered_per_hundred_today">Recovered per 100 000 population today</button>
+				</div>
+			</div>
+			<div class="rightContent">
+				<div class="allStatistics">
+				<div class="statistics1" style="  background-color: gold; text-align: center; ">
+					<label class="expand">
+						<input data-toggle-class ="statistics1" type="checkbox" class="expandInput">
+						<span></span>
+					  </label>
+					statistics1</div>
+				<div class="statistics2" style="  background-color: goldenrod;text-align: center;">
+					<label class="expand">
+						<input data-toggle-class ="statistics2" type="checkbox" class="expandInput">
+						<span></span>
+					  </label>
+					statistics2</div>
+				</div>
+				<div class="graphic" style=" text-align: center;">
+					<label class="expand">
+						<input data-toggle-class ="graphic" data-toggle-full ="canvas"  type="checkbox" class="expandInput">
+						<span><img src="" alt=""></span>
+					  </label>
+					  <div class="tableCanvas">	
+						  <div class="canvas">	
+						  <canvas id="graphs"></canvas>
+						</div>	
+					  	<p><select id="country">
+							<option >all</option>
+							<option >Russia</option>
+								<option >Afghanistan</option>
+					  	 </select></p style="display: inline-block;">
+					 	  <p><select id="status" >
+							<option >cases</option>
+							<option >deaths</option>
+							<option >recovered</option>
+					  	 </select></p>
+					</div>	
+					</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a  href="https://github.com/PalzunMike">PalzunMike</a></div>
+		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a  href="https://github.com/sanekiskita">sanekiskita</a></div>
+		<div class="contacts"><img src="./assetes/img/githubimg.png" alt=""><a  href="https://github.com/Zelevzel">Zelevzel</a></div>
+		<div class="contacts"><img src="./assetes/img/rs_school_js.svg" alt=""><a  href="https://rs.school/js/">Курс «JavaScript/Front-end»</a></div>
+	</footer>
 </body>
+<script type="module" src="./src/index.js"></script>
+<script type="module" src="./src/map.js"></script>
 </html>

@@ -40,7 +40,7 @@
     float: right;
     top:0;
     right: 0;
-
+    z-index: 2;
   }
   .expand input{
       visibility: hidden;
@@ -60,14 +60,57 @@
     z-index: 1000;
     
   }
-  div > .expand input:checked + span {
-    background-image: url("../assetes/img/folding.png");
+  div >.arrowToDown input{
+    visibility: hidden;
   }
+  div >.arrowToDown input + span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: url("../assetes/img/arrow-down.png") no-repeat;
+    background-size: contain;
+    transform: rotateX(0deg);
+    transition: 1s;
+  }
+  div >.arrowToDown input:checked + span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background: url("../assetes/img/arrow-down.png") no-repeat;
+    background-size: contain;
+    transform: rotateX(180deg);
+  }
+
+  .arrowToDown{
+    position: relative;
+    float: left;
+    text-align: left;
+    top: 0;
+    right: 0;
+  }
+
 
   /* отображеение иконки макс экран*/
     div:hover > .expand{
         visibility:visible;
     }
+    div >.expand input + span {
+
+    }
+    div >.arrowToDown input + span {
+
+    }
+
 
 
   .content{
@@ -85,7 +128,7 @@
   .centerContent{
     position: relative;
     display: grid;
-    grid-template-rows:  1fr auto;
+    grid-template-rows:  1fr;
     grid-gap: 5px;
   }
   .rightContent{
@@ -104,7 +147,7 @@
   .globalCases{
     height:100px;
   }
-  .dopInf,.clock{
+  .clock{
     height: 50px;
   }
 
@@ -132,6 +175,7 @@
     height: max-content;
   }
   .tableCanvas{
+    position: relative;
     padding-top: 15px;
     padding-bottom: 10px;
     vertical-align: middle;
@@ -148,9 +192,32 @@
   height: 20vh;
   width: 25vw;
 }
+.globalInf{
+  text-align: left;
+  overflow-y: scroll;
+  height: 50vh;
+}
 
 
 
+.globalInf img{
+width: 10%;
+max-width: 20px;
+}
+
+.globalInf::-webkit-scrollbar-track {border-radius: 4px;}
+.globalInf::-webkit-scrollbar {width: 6px;}
+.globalInf::-webkit-scrollbar-thumb {border-radius: 4px;background: #f0f2f5;}
+.globalInf:hover::-webkit-scrollbar-thumb {background: yellow;}
+
+.countrySelected{
+  cursor: pointer;
+}
+
+.countryInf, .timeCountry, .amountCountry{
+  border-bottom:solid 1px ;
+  margin-bottom: 5%;
+}
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
   
@@ -165,7 +232,7 @@
 @media  (max-width: 991px) {
     .content{
         grid-template-columns: auto;
-        grid-template-rows: 1fr 3fr 1.5fr;
+        grid-template-rows: 1fr auto 1.5fr;
     }
     .leftContent{
         grid-template-columns: repeat(2,1fr);
@@ -197,7 +264,9 @@ footer{
   height: 20vh;
   width: 90vw;
 }
-
+.map{
+  height: 100vh;
+}
 
     }
 
@@ -213,9 +282,16 @@ footer{
   width: 100%;
   height: 100%;
   left: 0px;
-
+  z-index: 25;
   
 }
+.FullScreen .globalInf{
+  text-align: center;
+  height: 100vh;
+}
+.FullScreen  p{
+font-size: 30px;}
+
 .FullScreen .expand{
   margin: 5px;
 }

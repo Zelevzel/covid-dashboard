@@ -9,7 +9,7 @@ function blockfullScreen() {
     );
     elemPlus80na80.classList.toggle('Fullobj');
     if (this.dataset.toggleFull === 'canvas') {
-      /* принудительное обновление размеров */
+      /* принудительное обновление размеров графика */
       // eslint-disable-next-line no-undef
       Chart.instances[0].resize();
     }

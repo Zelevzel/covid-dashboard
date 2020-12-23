@@ -1,5 +1,9 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable import/extensions */
+import '../styles/scss.scss';
+import './getDataListFunctions';
+import './DOMContentLoaded';
+import './globalDOMElements';
+import './filtersTableList';
+
 import fullScreen from './fullScreen.js';
 import { loadgraph as graph } from './graph.js';
 import statistics from './statistics.js';
@@ -15,3 +19,4 @@ window.onload = () => {
   statistics();
   map();
 };
+

@@ -1,0 +1,121 @@
+.sidebar {
+  width: 300px;
+  background-color: gray;
+
+  .sidebar-global-cases {
+      padding: 20px;
+      &-title {
+          font-size: 30px;
+          text-align: center;
+      }
+
+      &-value {
+          color: red;
+          font-size: 24px;
+          text-align: center;
+      }
+  }
+
+  .global-country-cases{
+      // display: flex;
+      // display: inline-block;
+      padding: 5px 5px;
+      border-bottom: solid black 3px;
+
+      .global-country {
+      display: inline-block;
+      padding-right: 10px;
+      }
+
+      .count-cases {
+        display: inline-block;
+          color: red;
+      }
+  }
+
+
+  .global-province-cases {
+    display: flex;
+    padding: 5px 5px;
+    border-bottom: solid black 3px;
+      .confirmed-cases{
+        padding: 5px;
+        color: red;
+      }
+      .location-name{
+          display: flex;
+          .province {
+            padding: 5px;
+          }
+          .country{
+            padding: 5px;
+          }
+      }
+    }
+    
+  .usa-county-cases {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    border-bottom: solid black 3px;
+      .confirmed-cases{
+        padding: 5px;
+        color: red;
+      }
+      .location-name{
+          display: flex;
+          .county {
+            padding: 5px;
+          }
+          .state {
+            padding: 5px;
+          }
+          .country{
+            padding: 5px;
+          }
+      }
+  }
+
+  .side-bar-table {
+      width: 300px;
+      height: 500px;
+      overflow: hidden;
+      overflow-y: scroll;
+
+      .sidebar-tab-content{
+          position: relative;
+          z-index: 1;
+          border: 1px solid #707070;
+
+      }
+  }
+
+  .hide {
+      display: none;
+  }
+
+  .show {
+      display: block;
+  }
+
+  .sidebar-tabs-block  {
+      .sidebar-tab {
+          position: relative;
+          z-index: 2;
+          display: inline-block;
+          padding: 5px 10px;
+          cursor: pointer;
+      }
+
+      .selected {
+          background-color:darkcyan;
+          border: 1px solid #707070;
+          border-bottom: 2px solid red;
+          border-radius: 3px 3px 0 0 ;
+      }
+  }
+}
+
+
+
+

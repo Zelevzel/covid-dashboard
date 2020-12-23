@@ -1,8 +1,8 @@
 import '../styles/scss.scss';
-import './getDataListFunctions';
-import './DOMContentLoaded';
-import './globalDOMElements';
-import './filtersTableList';
+import './getDataListFunctions.js';
+import './DOMContentLoaded.js';
+import './globalDOMElements.js';
+import './filtersTableList.js';
 
 import fullScreen from './fullScreen.js';
 import { loadgraph as graph } from './graph.js';
@@ -20,4 +20,3 @@ window.onload = () => {
   statistics();
   map();
 };
-

@@ -17,5 +17,6 @@ onmessage = function run(info) {
         break;
     }
   }
+
   postMessage(divGlobalInf);
 };

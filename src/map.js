@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable consistent-return */
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-shadow */
 /* eslint-disable prettier/prettier */
 /* eslint-disable eqeqeq */
@@ -28,7 +30,7 @@ let arr = [];
 let indexMap = 'cases';
 const index = document.querySelectorAll('.index_item');
 
-function getInfoAllCountries() {
+export default function getInfoAllCountries() {
   circles.clearLayers();
   infoCountries.splice(0, infoCountries.length);
   arr = [];
@@ -212,7 +214,6 @@ function fillArray(el) {
   });
 }
 
-// eslint-disable-next-line consistent-return
 function setRadius(el) {  
   for (let i = 0; i < arr.length; i++) {
     if (el == 0) {

@@ -8,6 +8,7 @@ import fullScreen from './fullScreen.js';
 import { loadgraph as graph } from './graph.js';
 import statistics from './statistics.js';
 import map from './map.js';
+
 /*
 глобальные переменные
 */

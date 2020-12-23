@@ -3,10 +3,21 @@
         padding: 0;
         border: 0;
   }
-
+  p{
+    color: #fffffe;
+  }
+  .countrySelected{
+    color: #7f5af0;
+  }
+select{
+  color :#94a1b2;;
+}
+.statistics2{
+  color: #fffffe;
+}
   a{
     text-decoration: none;
-    color: black;
+    color: #94a1b2;
   }
   html {
     height: 100%;
@@ -19,16 +30,17 @@
   main{
     min-height:530px ;
     padding: 5px 5px;
-    background: #B8873D;
+    background: #242629;
   } 
 
    header{
-    background: #246E6E;
+    background: #16161a;
     vertical-align: middle;
     text-align: center;
   }
   header img{
     width: 35px;
+    filter: brightness(1.3) invert(0.17) saturate(1.6) sepia(0.25) url('#x-rays');
   }
   header p{
     display: inline-block;
@@ -48,6 +60,7 @@
   }
 
   div >.expand input + span {
+    filter: invert(0.7);
     position: absolute;
     top: 0;
     left: 0;
@@ -65,6 +78,7 @@
     visibility: hidden;
   }
   div >.arrowToDown input + span {
+    filter: invert(0.7);
     position: absolute;
     top: 0;
     left: 0;
@@ -79,6 +93,7 @@
     transition: 1s;
   }
   div >.arrowToDown input:checked + span {
+    filter: invert(0.7);
     position: absolute;
     top: 0;
     left: 0;
@@ -105,14 +120,6 @@
     div:hover > .expand{
         visibility:visible;
     }
-    div >.expand input + span {
-
-    }
-    div >.arrowToDown input + span {
-
-    }
-
-
 
   .content{
     height: 100%;
@@ -155,7 +162,7 @@
   footer{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    background-color:	#B8583D;
+    background-color:	#16161a;
   }
   
   .contacts{
@@ -171,7 +178,7 @@
     /*filter: invert(1);*/
   }
   .graphic{
-    background-color:goldenrod;
+    background-color:#16161a;
     
     height: max-content;
   }
@@ -209,7 +216,7 @@ max-width: 20px;
 .globalInf::-webkit-scrollbar-track {border-radius: 4px;}
 .globalInf::-webkit-scrollbar {width: 6px;}
 .globalInf::-webkit-scrollbar-thumb {border-radius: 4px;background: #f0f2f5;}
-.globalInf:hover::-webkit-scrollbar-thumb {background: yellow;}
+.globalInf:hover::-webkit-scrollbar-thumb {background: #94a1b2;}
 
 .countrySelected{
   cursor: pointer;

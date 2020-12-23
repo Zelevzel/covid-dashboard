@@ -87,9 +87,9 @@ function addInfCountrydop(data, classInput, classDiv) {
       value.country.toLowerCase().toString() === choice.toLowerCase().toString()
     );
   });
-  newCountry.innerHTML += `<p style='color:yellow;'>Cases: ${country[0].casesPerHundredThousand}</p>`;
-  newCountry.innerHTML += `<p style='color:yellow;'>Deaths: ${country[0].deathsPerHundredThousand}</p>`;
-  newCountry.innerHTML += `<p style='color:yellow;'>Recovered: ${country[0].recoveredPerHundredThousand}</p>`;
+  newCountry.innerHTML += `<p style='color:#94a1b2;'>Cases: ${country[0].casesPerHundredThousand}</p>`;
+  newCountry.innerHTML += `<p style='color:#94a1b2;'>Deaths: ${country[0].deathsPerHundredThousand}</p>`;
+  newCountry.innerHTML += `<p style='color:#94a1b2;'>Recovered: ${country[0].recoveredPerHundredThousand}</p>`;
   divGlobalInf.append(newCountry);
 }
 
@@ -104,9 +104,9 @@ function addInfCountry(data) {
       value.country.toLowerCase().toString() === choice.toLowerCase().toString()
     );
   });
-  newCountry.innerHTML += `<p style='color:yellow;'>Cases: ${country[0].cases}</p>`;
-  newCountry.innerHTML += `<p style='color:yellow;'>Deaths: ${country[0].deaths}</p>`;
-  newCountry.innerHTML += `<p style='color:yellow;'>Recovered: ${country[0].recovered}</p>`;
+  newCountry.innerHTML += `<p style='color:#94a1b2;'>Cases: ${country[0].cases}</p>`;
+  newCountry.innerHTML += `<p style='color:#94a1b2;'>Deaths: ${country[0].deaths}</p>`;
+  newCountry.innerHTML += `<p style='color:#94a1b2;'>Recovered: ${country[0].recovered}</p>`;
   divGlobalInf.append(newCountry);
   addInfCountrydop(data, 'arrowToDownInputT', 'timeCountry');
   addInfCountrydop(data, 'arrowToDownInputC', 'amountCountry');

@@ -56,6 +56,16 @@ async function addInfWorld(info) {
   const newCountry = document.createElement('div');
   newCountry.innerHTML = '';
   const choice = document.querySelector('#Globalstatus').value;
+
+  const myWorker = new Worker('./src/workerStat.js', {
+    type: 'module',
+  });
+
+  myWorker.postMessage({ choice, data: info });
+  myWorker.onmessage = (event) => {
+    divGlobalInf.innerHTML = event.data;
+  };
+  /*
   info.forEach((value) => {
     divGlobalInf.innerHTML += `<p class="countrySelected" data-country='${value.country}'><img src='${value.flag}'></img>${value.country}</p> `;
     switch (choice) {
@@ -72,7 +82,7 @@ async function addInfWorld(info) {
         divGlobalInf.innerHTML += `<p style='color:yellow; border-bottom: solid 2px;border-color:black;'>${value.cases} Cases</p>`;
         break;
     }
-  });
+  }); */
 }
 
 function addInfCountrydop(data, classInput, classDiv) {

@@ -1,5 +1,5 @@
 .sidebar {
-  width: 300px;
+  //width: 300px;
   background-color: gray;
 
   #search {
@@ -81,15 +81,15 @@
   }
 
   .side-bar-table {
-      width: 300px;
-      height: 700px;
+     // width: 300px;
+      height: 75vh;
       overflow: hidden;
       overflow-y: scroll;
 
       .sidebar-tab-content{
           position: relative;
           z-index: 1;
-          width: 1500px;
+         // width: 1500px;
           border: 1px solid #707070;
 
       }
@@ -108,7 +108,7 @@
           position: relative;
           z-index: 2;
           display: inline-block;
-          padding: 5px 10px;
+          padding: 5px 3px;
           cursor: pointer;
       }
 

@@ -1,4 +1,4 @@
-import { tabsContent, tabs, sideBar, dataListInput } from './globalDOMElements';
+import { tabsContent, tabs, sideBar, filterInput } from './globalDOMElements';
 
 document.addEventListener('DOMContentLoaded', () => {
   function hideTabContent() {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === item) {
           hideTabContent();
           showTabContent(index);
-          dataListInput.value = '';
+          filterInput.value = '';
         }
       });
     }

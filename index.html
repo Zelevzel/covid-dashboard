@@ -9,8 +9,6 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>COVID dashboard</title>
 	<link rel="shortcut icon" href="./assetes/img/covid.png" type="image/png">
-	<link rel="stylesheet" href="./styles/map.css" type="text/css" />
-	<link rel="stylesheet" href="./styles/style.css" type="text/css" />
 	<script src="./src/lib/Chart.bundle.min.js"></script>
 </head>
 
@@ -20,40 +18,49 @@
 	</header>
 	<main>
 		<div class="content">
-			<div class="leftContent">
-				<div class="globalCases" style=" background-color: #16161a;text-align: center;">
+			<div class="sidebar">
+				<div class="globalCases">
+					<label class="expand">
+						<input data-toggle-class="globalCases" type="checkbox" class="expandInput">
+						<span></span>
+					</label>
+					<div class="sidebar-global-cases-title">Global cases</div>
+					<div class="sidebar-global-cases-value"></div>
+				</div>
+				<!-- <div class="globalCases" style="text-align: center; background-color: #16161a;">
 					<label class="expand">
 						<input data-toggle-class="globalCases" type="checkbox" class="expandInput">
 						<span></span>
 					</label>
 					<p>globalCases</p>
+				</div> -->
+				<div class="search">
+					<input type="text" id="search">
 				</div>
-				<div class="table" style=" background-color: #16161a; text-align: center;">
+				<hr>
+				<div class="side-bar-table">
 					<label class="expand">
-						<input data-toggle-class="table" type="checkbox" class="expandInput">
+						<input data-toggle-class="side-bar-table" type="checkbox" class="expandInput">
 						<span></span>
 					</label>
-              <div class="search">
-                  <input type="text" id="search">
-		          </div>
-							<div class="side-bar-table">
-                <div class="sidebar-tab-content"></div>
-                <div class="sidebar-tab-content"></div>
-                <div class="sidebar-tab-content"></div>
-		          </div>
-              <div class="sidebar-tabs-block">
-                <div class="sidebar-tab selected">Tab 1</div>
-                <div class="sidebar-tab">Tab 2</div>
-                <div class="sidebar-tab">Tab 3</div>
-              </div>
+					<div class="sidebar-tab-content"></div>
+					<div class="sidebar-tab-content"></div>
+					<div class="sidebar-tab-content"></div>
 				</div>
-				<div class="clock" style=" background-color: #16161a; text-align: center;">
+				<div class="sidebar-tabs-block">
+					<div class="sidebar-tab selected">byCountry</div>
+					<div class="sidebar-tab">byProvince</div>
+					<div class="sidebar-tab">byCounty</div>
+				</div>
+
+				<!-- <div class="clock" style=" text-align: center; background-color: #16161a;">
 					<label class="expand">
 						<input data-toggle-class="clock" type="checkbox" class="expandInput">
 						<span></span>
 					</label>
 					<p>clock</p>
-				</div>
+				</div> -->
+
 			</div>
 			<div class="centerContent">
 				<div id="map" class="map">
@@ -94,7 +101,7 @@
 			</div>
 			<div class="rightContent">
 				<div class="allStatistics">
-					<div class="statistics1" style="  background-color: #16161a; text-align: center; ">
+					<div class="statistics1" style=" text-align: center;  background-color: #16161a; ">
 						<label class="expand">
 							<input data-toggle-class="statistics1" type="checkbox" class="expandInput">
 							<span></span>
@@ -108,7 +115,7 @@
 						<div class="globalInf">
 						</div>
 					</div>
-					<div class="statistics2" style="  background-color: #16161a;text-align: center;">
+					<div class="statistics2" style="text-align: center;  background-color: #16161a;">
 						<label class="expand">
 							<input data-toggle-class="statistics2" type="checkbox" class="expandInput">
 							<span></span>
@@ -163,6 +170,5 @@
 				«JavaScript/Front-end»</a></div>
 	</footer>
 </body>
-<script type="module" src="./src/index.js"></script>
-<script type="module" src="./src/map.js"></script>
+
 </html>
